@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>나 좋아해?</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Pretendard", "Apple SD Gothic Neo", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    img {
+      width: 220px;
+      margin-bottom: 25px;
+    }
+
+    .buttons {
+      position: relative;
+      height: 120px;
+    }
+
+    button {
+      position: absolute;
+      padding: 12px 26px;
+      font-size: 18px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    #yesBtn {
+      left: 50%;
+      transform: translateX(-110%);
+      background-color: #ff6b8a;
+      color: white;
+    }
+
+    #noBtn {
+      left: 50%;
+      transform: translateX(10%);
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="title">나 좋아해?</h1>
+
+    <!-- 귀여운 GIF (원하면 다른 걸로 바꿔도 됨) -->
+    <img
+      src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3E0Y2h6eGJ0YjZ5eTRmYzE4cTQyN2c4eW5hZ2Z2bW56b3A1ZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3oriO0OEd9QIDdllqo/giphy.gif"
+      alt="cute gif"
+    />
+
+    <div class="buttons">
+      <button id="yesBtn">응</button>
+      <button id="noBtn">아니</button>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const title = document.getElementById("title");
+
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("click", moveButton);
+
+    function moveButton() {
+      const container = document.querySelector(".buttons");
+
+      const maxX = container.clientWidth - noBtn.offsetWidth;
+      const maxY = container.clientHeight - noBtn.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+      noBtn.style.transform = "none";
+    }
+
+    yesBtn.addEventListener("click", () => {
+      title.textContent = "그럴 줄 알았어!";
+      noBtn.style.display = "none";
+      yesBtn.style.left = "50%";
+      yesBtn.style.transform = "translateX(-50%)";
+    });
+  </script>
+</body>
+</html>
