@@ -46,7 +46,7 @@
     .backBtn{position:fixed;left:18px;bottom:18px;background:rgba(255,255,255,0.08);border-radius:10px;padding:10px 14px;border:1px solid rgba(255,255,255,0.2);color:var(--muted);z-index:1001;pointer-events:auto;}
 
     /* list view */
-    .listView{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;z-index:1000;pointer-events:none;}
+    .listView{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:24px;z-index:1000;background:#020617;pointer-events:auto;}
     .listCard{width:100%;max-width:900px;height:80%;overflow:auto;background:#020617;border-radius:12px;padding:18px;box-sizing:border-box;pointer-events:auto;}
     .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
     .gridItem{background:rgba(255,255,255,0.02);padding:12px;border-radius:8px;text-align:center}
@@ -300,7 +300,10 @@
     }
 
     // List / Memorise view
-    function showList(title, list){
+    function showList(title, items){
+    listView.style.display = 'flex';
+    listView.style.pointerEvents = 'auto';
+
       listTitle.textContent = title;
       listGrid.innerHTML = '';
       if (!list || list.length===0){
